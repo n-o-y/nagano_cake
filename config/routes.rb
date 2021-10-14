@@ -5,5 +5,6 @@ Rails.application.routes.draw do
       sessions: "admin/admins/sessions"
     }
     resources :genres, only: [:index, :create, :edit, :update]
+    resources :items, except: [:destroy]
   end
 end
