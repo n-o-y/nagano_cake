@@ -3,7 +3,7 @@
   <%= f.attachment_field :image %>
   <%= f.text_field :name %>
   <%= f.text_area :introduction %>
-  <%= f.collection_select(:genre, @genres, :id, :name, {prompt: "ジャンルを選択してください"}) %>
+  <%= f.collection_select :genre_id, @genres, :id, :name, {prompt: "ジャンルを選択してください"} %>
   <%= f.text_field :price %>
   <%= f.radio_button :is_active, TRUE %>販売中<%= f.radio_button :is_active, FALSE %>販売停止中
   <%= f.submit "新規登録" %>
