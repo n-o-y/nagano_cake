@@ -1,4 +1,11 @@
 <h1>商品詳細</h1>
+<%= attachment_image_tag @item, :image, format: "jpeg", size: "100x100", fallback: "no_image.jpg" %>
 <%= @item.name %>
 <%= @item.introduction %>
-<%= attachment_image_tag @item, :image, format: "jpeg", size: "100x100" %>
+<%= @item.genre.name %>
+<%= @item.price*@tax %>
+<%= @item.price %>
+<% if @item.is_active == TRUE %>販売中
+  <% else %>販売停止中
+<% end %>
+<%= link_to "編集する", "/admin/items/#{@item.id}/edit" %>
