@@ -1,0 +1,12 @@
+<h1><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h1>
+<%= @customer.id %>
+<% form_with model:@customer, local:true do |f| %>
+  <%= f.text_field :last_name %><%= f.text_field :first_name %>
+  <%= f.text_field :last_name_kana %><%= f.text_field :first_name_kana %>
+  <%= f.text_field :postal_code %>
+  <%= f.text_area :address %>
+  <%= f.text_field :telephone_number %>
+  <%= f.text_field :email %>
+  <%= f.radio_button :is_active, TRUE %>有効<%= f.radio_button :is_active, FALSE %>退会
+  <%= f.submit "変更を保存" %>
+<% end %>

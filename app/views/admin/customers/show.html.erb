@@ -1,0 +1,13 @@
+<h1><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h1>
+<%= @customer.id %>
+<%= @customer.last_name %><%= @customer.first_name %>
+<%= @customer.last_name_kana %><%= @customer.first_name_kana %>
+<%= @customer.postal_code %>
+<%= @customer.address %>
+<%= @customer.telephone_number %>
+<%= @customer.email %>
+<% if @customer.is_active == TRUE %>有効
+<% else %>退会
+<% end %>
+<%= link_to "編集する", "/admin/customers" %>
+<%= link_to "注文履歴一覧を見る", "/admin/customers" %>
