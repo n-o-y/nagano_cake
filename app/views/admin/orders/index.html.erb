@@ -1,0 +1,6 @@
+<h1>注文履歴一覧</h1>
+<% @orders.each do |order| %>
+  <%= order.created_at %>
+  <%= order.customer.name %>
+  <%= order.status %>
+<% end %>

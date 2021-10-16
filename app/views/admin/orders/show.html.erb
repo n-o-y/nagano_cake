@@ -1,0 +1,8 @@
+<h1>注文履歴詳細</h1>
+<%= @order.customer.last_name %><%= @order.customer.first_name %>
+<%= @order.created_at %>
+<%= @order.postal_code %><%= @order.address %><%= @order.name %>
+<%= @order.payment_method %>
+<% form_with model:@order, local:true do |f| %>
+  <%= f.collection_select :status, @order, :status, :status %>
+<% end %>
