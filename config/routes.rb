@@ -6,7 +6,8 @@ Rails.application.routes.draw do
     }
     resources :genres, only: [:index, :create, :edit, :update]
     resources :items, except: [:destroy]
-    resources :customers, except: [:new, :create, :destroy]
-    resources :orders, only: [:index, :show, :update]
+    resources :customers
+    resources :orders
+    resources :order_details, only: [:update]
   end
 end

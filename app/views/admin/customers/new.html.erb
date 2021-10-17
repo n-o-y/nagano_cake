@@ -1,0 +1,14 @@
+<h1>顧客新規登録</h1>
+<%= form_with model: [:admin, @customer], local:true do |f| %>
+  <%= f.text_field :last_name %>
+  <%= f.text_field :first_name %>
+  <%= f.text_field :last_name_kana %>
+  <%= f.text_field :first_name_kana %>
+  <%= f.text_field :email %>
+  <%= f.text_field :encrypted_password %>
+  <%= f.text_field :postal_code %>
+  <%= f.text_field :address %>
+  <%= f.text_field :telephone_number %>
+  <%= f.radio_button :is_active, TRUE %>有効<%= f.radio_button :is_active, FALSE %>退会
+  <%= f.submit "新規登録" %>
+<% end %>

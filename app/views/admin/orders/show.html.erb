@@ -3,6 +3,7 @@
 <%= @order.created_at %>
 <%= @order.postal_code %><%= @order.address %><%= @order.name %>
 <%= @order.payment_method %>
-<% form_with model:@order, local:true do |f| %>
-  <%= f.collection_select :status, @order, :status, :status %>
+<%= form_with model: [:admin, @order], local:true do |f| %>
+  <%= f.select :status, [ ["製作中", :making ], ["発送中", :shipping ] ] %>
+  <%= f.submit "更新" %>
 <% end %>

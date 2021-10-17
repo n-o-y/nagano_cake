@@ -11,8 +11,8 @@ class CreateCustomers < ActiveRecord::Migration[5.2]
       t.string :address
       t.string :telephone_number
       t.boolean :is_active, default: TRUE
-      t.datetime :created_at, default: now
-      t.datetime :updated_at, default: now
+      t.datetime :created_at
+      t.datetime :updated_at
 
       t.timestamps
     end

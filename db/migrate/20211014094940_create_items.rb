@@ -5,9 +5,9 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.text :introduction
       t.integer :price
       t.boolean :is_active, default: TRUE
-      t.datetime :created_at, default: now
-      t.datetime :updated_at, default: now
-      
+      t.datetime :created_at
+      t.datetime :updated_at
+
       t.timestamps
     end
   end
