@@ -6,5 +6,6 @@
 
 <% @genres.each do |genre| %>
   <%= genre.name %>
+  <%#= genre.created_at.in_time_zone('Tokyo') %>
   <%= link_to "編集する", "/admin/genres/#{genre.id}/edit" %>
 <% end %>
