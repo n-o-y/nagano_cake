@@ -5,6 +5,8 @@ class Admin::OrdersController < ApplicationController
 
   def show
     @order = Order.joins(:customer).find(params[:id])
+    @order_detail = OrderDetail.joins(:item).where(order_id: params[:id])
+    @TAX = 1.1
   end
 
   def update

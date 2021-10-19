@@ -1,1 +1,9 @@
-<h1>TOPページ</h1>
+<h1>注文履歴一覧</h1>
+<% @orders.each do |order| %>
+  <%= link_to "/admin/orders/#{order.id}" do %>
+    <%= order.created_at %>
+  <% end %>
+  <%= order.customer.last_name %><%= order.customer.first_name %>
+  <%= order.id %>
+  <%= order.payment_method %>
+<% end %>

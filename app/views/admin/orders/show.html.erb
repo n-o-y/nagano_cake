@@ -7,3 +7,13 @@
   <%= f.select :status, [ ["製作中", :making ], ["発送中", :shipping ] ] %>
   <%= f.submit "更新" %>
 <% end %>
+<% @order_detail.each do |order_detail| %>
+  <%= order_detail.item.name %>
+  <%= order_detail.price*@TAX %>
+  <%= order_detail.amount %>
+  <%= order_detail.price*order_detail.amount %>
+  <%= form_with model: [:admin, order_detail], local:true do |f| %>
+    <%= f.select :status, [ ["製作中", :a ], ["発送中", :b ] ] %>
+    <%= f.submit "更新" %>
+  <% end %>
+<% end %>

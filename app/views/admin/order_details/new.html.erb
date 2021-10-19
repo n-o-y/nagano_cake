@@ -1,0 +1,9 @@
+<h1>新規注文詳細登録</h1>
+<%= form_with model: [:admin, @order_detail], local:true do |f| %>
+  <%= f.text_field :order_id %>注文ID
+  <%= f.text_field :item_id %>商品ID
+  <%= f.text_field :price %>価格
+  <%= f.text_field :amount %>数量
+  <%= f.radio_button :making_status, "a" %>クレジットカード<%= f.radio_button :payment_method, "b" %>銀行振込
+  <%= f.submit "新規登録" %>
+<% end %>
