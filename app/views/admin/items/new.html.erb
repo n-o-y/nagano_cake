@@ -1,10 +1,44 @@
-<h1>商品新規登録</h1>
-<%= form_with model: [:admin, @item], local:true do |f| %>
-  <%= f.attachment_field :image %>
-  <%= f.text_field :name %>
-  <%= f.text_area :introduction %>
-  <%= f.collection_select :genre_id, @genres, :id, :name, {prompt: "ジャンルを選択してください"} %>
-  <%= f.text_field :price %>
-  <%= f.radio_button :is_active, TRUE %>販売中<%= f.radio_button :is_active, FALSE %>販売停止中
-  <%= f.submit "新規登録" %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <h2 class="ml-30 my-5">商品新規登録</h2>
+  </div>
+  <div class="row w-100">
+    <div class="col col-6 mx-auto">
+      <%= form_with model: [:admin, @item], local:true do |f| %>
+        <div class="field form-group row">
+          <%= f.label :商品画像, class:"col-form-label col-4" %>
+          <%= f.attachment_field :image, class:"col-8" %>
+        </div>
+        <div class="field form-group row">
+          <%= f.label :商品名, class:"col-form-label col-4" %>
+          <%= f.text_field :name, class:"col-8" %>
+        </div>
+        <div class="field form-group row">
+          <%= f.label :商品説明, class:"col-form-label col-4" %>
+          <%= f.text_area :introduction, class:"col-8" %>
+        </div>
+        <div class="field form-group row">
+          <%= f.label :ジャンル, class:"col-form-label col-4" %>
+          <%= f.collection_select :genre_id, @genres, :id, :name, {prompt: "ジャンルを選択してください"}, class:"col-8" %>
+        </div>
+        <div class="field form-group row">
+          <%= f.label :税抜価格, class:"col-form-label col-4" %>
+          <div class="col-8">
+            <%= f.text_field :price %>円
+          </div>
+        </div>
+        <div class="field form-group row">
+          <%= f.label :販売ステータス, class:"col-form-label col-4" %>
+          <div class="col-8">
+            <%= f.radio_button :is_active, TRUE %>販売中<%= f.radio_button :is_active, FALSE, class:"ml-3" %>販売停止中
+          </div>
+        </div>
+        <div class="actions text-center my-5">
+          <%= f.submit "   新規登録   ", class:"btn btn-success btn-lg" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
