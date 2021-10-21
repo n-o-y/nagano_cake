@@ -8,4 +8,8 @@ Rails.application.routes.draw do
     resources :orders
     resources :order_details
   end
+  scope module: :public do
+    get '/' => 'homes#top'
+    get '/about' => 'homes#about'
+  end
 end
