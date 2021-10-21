@@ -1,12 +1,78 @@
-<h1><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h1>
-<%= @customer.id %>
-<%= form_with model: [:admin, @customer], local:true do |f| %>
-  <%= f.text_field :last_name %><%= f.text_field :first_name %>
-  <%= f.text_field :last_name_kana %><%= f.text_field :first_name_kana %>
-  <%= f.text_field :postal_code %>
-  <%= f.text_area :address %>
-  <%= f.text_field :telephone_number %>
-  <%= f.text_field :email %>
-  <%= f.radio_button :is_active, TRUE %>有効<%= f.radio_button :is_active, FALSE %>退会
-  <%= f.submit "変更を保存" %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <h2 class="ml-30 my-5"><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h2>
+  </div>
+  <div class="row">
+    <div class="col col-8">
+      <div class="field row my-2">
+        <label class="col-4">
+          会員ID
+        </label>
+        <div class="col-8">
+          <%= @customer.id %>
+        </div>
+      </div>
+      <%= form_with model: [:admin, @customer], local:true do |f| %>
+        <div class="field row my-2">
+          <label class="col-4">
+            氏名
+          </label>
+          <div class="col-8">
+            <%= f.text_field :last_name %><%= f.text_field :first_name, class:"ml-3" %>
+          </div>
+        </div>
+        <div class="field row my-2">
+          <label class="col-4">
+            フリガナ
+          </label>
+          <div class="col-8">
+            <%= f.text_field :last_name_kana %><%= f.text_field :first_name_kana, class:"ml-3" %>
+          </div>
+        </div>
+        <div class="field row my-2">
+          <label class="col-4">
+            郵便番号
+          </label>
+          <div class="col-8">
+            <%= f.text_field :postal_code %>
+          </div>
+        </div>
+        <div class="field row my-2">
+          <label class="col-4">
+            住所
+          </label>
+          <div class="col-8">
+            <%= f.text_area :address %>
+          </div>
+        </div>
+        <div class="field row my-2">
+          <label class="col-4">
+            電話番号
+          </label>
+          <div class="col-8">
+            <%= f.text_field :telephone_number %>
+          </div>
+        </div>
+        <div class="field row my-2">
+          <label class="col-4">
+            メールアドレス
+          </label>
+          <div class="col-8">
+            <%= f.text_field :email %>
+          </div>
+        </div>
+        <div class="field row my-2">
+          <label class="col-4">
+            会員ステータス
+          </label>
+          <div class="col-8">
+            <%= f.radio_button :is_active, TRUE %>有効<%= f.radio_button :is_active, FALSE, class:"ml-2" %>退会
+          </div>
+        </div>
+        <div class="mt-2">
+          <%= f.submit "  変更を保存  ", class:"btn btn-success" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
