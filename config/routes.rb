@@ -11,5 +11,8 @@ Rails.application.routes.draw do
   scope module: :public do
     get '/' => 'homes#top'
     get '/about' => 'homes#about'
+    devise_for :customers, controllers: {
+      registrations: "public/customers/registrations",
+      sessions: "public/customers/sessions"}
   end
 end
