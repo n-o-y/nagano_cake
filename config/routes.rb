@@ -14,5 +14,12 @@ Rails.application.routes.draw do
     devise_for :customers, controllers: {
       registrations: "public/customers/registrations",
       sessions: "public/customers/sessions"}
+    resource :customers, only: [:edit, :update] do
+      collection do
+        get 'my_page' => 'customers#show'
+        get 'unsubscribe'
+        patch 'withdraw'
+      end
+    end
   end
 end
