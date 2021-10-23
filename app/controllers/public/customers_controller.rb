@@ -4,6 +4,8 @@ class Public::CustomersController < ApplicationController
   end
 
   def edit
+    @customer = current_customer
+    redirect_to "/customers/my_page"
   end
 
   def update

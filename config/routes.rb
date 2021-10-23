@@ -11,10 +11,8 @@ Rails.application.routes.draw do
   scope module: :public do
     get '/' => 'homes#top'
     get '/about' => 'homes#about'
-    devise_for :customers, controllers: {
-      registrations: "public/customers/registrations",
-      sessions: "public/customers/sessions"}
-    resource :customers, only: [:edit, :update] do
+    devise_for :customers, controllers: {sessions: "public/customers/sessions", registrations: "public/customers/registrations"}
+    resource :customers, only: [:update] do
       collection do
         get 'my_page' => 'customers#show'
         get 'unsubscribe'
