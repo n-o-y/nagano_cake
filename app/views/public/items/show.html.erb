@@ -3,3 +3,4 @@
 <%= @item.name %>
 <%= @item.introduction %>
 <%= @item.price %>
+<%= link_to "カートにいれる", cart_items_path(item.id: @item.id), method: :post %>

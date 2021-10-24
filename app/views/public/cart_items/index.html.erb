@@ -1,0 +1,14 @@
+<h1>ショッピングカート</h1>
+<%= link_to "カートを空にする", "/cart_items/destroy_all", method: :delete %>
+<% @cart_items.each do |cart_item| %>
+  <%= attachment_image_tag cart_item.item, :image, format: "jpeg", size: "100x100", fallback: "no_image.jpg" %>
+  <%= cart_item.item.name %>
+  <%= cart_item.item.price*@TAX %>
+  <%= form_with model:cart_item, local:true do |f| %>
+    <%= f.number_field :amount, min:1, max:100 %>
+    <%= f.submit "変更" %>
+  <% end %>
+  <%= cart_item.item.price*@TAX*cart_item.amount %>
+  <%= link_to "削除する", "/cart_items/#{cart_item.id}", method: :delete %>
+<% end %>
+<%= link_to "買い物を続ける", "/items" %>
