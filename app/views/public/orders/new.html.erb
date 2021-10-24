@@ -1,0 +1,6 @@
+<h1>支払情報入力</h1>
+<%= form_with model:@order, local:true do |f| %>
+  <%= f.label :支払方法 %>
+  <%= f.radio_button :payment_method, :credit %>クレジットカード
+  <%= f.radio_button :payment_method, :bank %>銀行振込
+  <%= f.label :お届け先 %>
