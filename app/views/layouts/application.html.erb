@@ -10,34 +10,6 @@
   </head>
 
   <body>
-    <div>
-      <header class="border-bottom">
-        <div class="navbar navbar-expand">
-          <div class="container d-flex">
-            <%= link_to "ながのCAKE", "/", class:"navbar-brand p-2 text-dark"%>
-            <div>
-              <ul class="navbar-nav ml-auto">
-                <li class="nav-item border rounded ml-2">
-                  <%= link_to "商品一覧", "/admin/items/", class:"nav-link text-dark" %>
-                </li>
-                <li class="nav-item border rounded ml-2">
-                  <%= link_to "会員一覧", "/admin/customers/", class:"nav-link text-dark" %>
-                </li>
-                <li class="nav-item border rounded ml-2">
-                  <%= link_to "注文履歴一覧", "/admin/orders/", class:"nav-link text-dark" %>
-                </li>
-                <li class="nav-item border rounded ml-2">
-                  <%= link_to "ジャンル一覧", "/admin/genres/", class:"nav-link text-dark" %>
-                </li>
-                <li class="nav-item border rounded ml-2">
-                  <%= link_to "ログアウト", "/admin/sign_out/", class:"nav-link text-dark" %>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </header>
-    </div>
     <%= yield %>
   </body>
 </html>

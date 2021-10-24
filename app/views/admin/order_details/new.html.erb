@@ -1,3 +1,4 @@
+<%= render 'admin/header_admin' %>
 <h1>新規注文詳細登録</h1>
 <%= form_with model: [:admin, @order_detail], local:true do |f| %>
   <%= f.text_field :order_id %>注文ID
