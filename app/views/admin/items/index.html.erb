@@ -3,6 +3,7 @@
   <div class="row">
     <h2 class="ml-30 my-5">商品一覧</h2>
   </div>
+  <%= link_to "追加", "/admin/items/new" %>
   <div class="row w-100">
     <table class="col col-10 mx-auto">
       <thead>
@@ -27,6 +28,7 @@
             </td>
           </tr>
         <% end %>
+        <%= paginate @items %>
       </tbody>
     </table>
   </div>

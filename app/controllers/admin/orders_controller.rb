@@ -1,6 +1,6 @@
 class Admin::OrdersController < ApplicationController
   def index
-    @orders = Order.joins(:customer)
+    @orders = Order.page(params[:page]).joins(:customer)
   end
 
   def show

@@ -1,6 +1,6 @@
 class Admin::ItemsController < ApplicationController
   def index
-    @items = Item.joins(:genre)
+    @items = Item.page(params[:page]).joins(:genre)
   end
 
   def new
