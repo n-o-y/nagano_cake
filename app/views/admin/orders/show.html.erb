@@ -43,7 +43,7 @@
         </label>
         <div class="col-8">
           <%= form_with model: [:admin, @order], local:true do |f| %>
-            <%= f.select :status, [ ["製作中", :making ], ["発送中", :shipping ] ] %>
+            <%= f.select :status, [ ["入金待ち", :awaiting_payment], ["入金確認", :payment_received], ["製作中", :processing_order], ["発送準備中", :preparing_to_ship], ["発送済み", :item_shipped] ] %>
             <%= f.submit "更新", class:"btn btn-success" %>
           <% end %>
         </div>
@@ -69,7 +69,7 @@
             <td><%= order_detail.amount %></td>
             <td><%= order_detail.price*order_detail.amount*@TAX %></td>
             <td><%= form_with model: [:admin, order_detail], local:true do |f| %>
-                  <%= f.select :status, [ ["製作中", :a ], ["発送中", :b ] ] %>
+                  <%= f.select :status, [ ["製作不可", :order_pending], ["製作待ち", :preparing_ingredients], ["製作中", :baking], ["製作完了", :order_completed] ] %>
                   <%= f.submit "更新", class:"btn btn-success" %>
                 <% end %>
             </td>

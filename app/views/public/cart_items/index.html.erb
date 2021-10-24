@@ -9,7 +9,7 @@
     <%= f.number_field :amount, min:1, max:100 %>
     <%= f.submit "変更" %>
   <% end %>
-  <%= cart_item.item.price*@TAX*cart_item.amount %>
+  <%= cart_item.item.price.to_i*cart_item.amount.to_i*@TAX %>
   <%= link_to "削除する", "/cart_items/#{cart_item.id}", method: :delete %>
 <% end %>
 <%= link_to "買い物を続ける", "/items" %>
