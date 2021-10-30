@@ -16,4 +16,10 @@
 <%= @order.payment_method %>
 <%= @order.postal_code %><%= @order.address %><%= @order.name %>
 
-<%= link_to "注文を確定する", "/orders", method: :post %>
+<%= link_to "注文を確定する", orders_path(
+postal_code: @order.postal_code,
+address: @order.address,
+name: @order.name,
+total_payment: Order::SHIPPING_COST.to_i + sum.to_i,
+payment_method: @order.payment_method
+), method: :post %>
