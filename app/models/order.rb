@@ -9,4 +9,5 @@ class Order < ApplicationRecord
   validates :total_payment, presence: true
   belongs_to :customer
   has_many :order_details
+  SHIPPING_COST = 800
 end

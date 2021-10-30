@@ -1,5 +1,19 @@
 <h1>注文情報確認</h1>
-<% %>
+<% sum = 0 %>
+<% @cart_items.each do |cart_item| %>
+  <%= cart_item.item.name %>
+  <%= cart_item.price_with_tax(cart_item.item.price) %>
+  <%= cart_item.amount %>
+  <%= cart_item.price_with_tax(cart_item.sum_of_price(cart_item.item.price, cart_item.amount)) %>
+  <% sum = sum + cart_item.price_with_tax(cart_item.sum_of_price(cart_item.item.price, cart_item.amount)).to_i %>
+<% end %>
+
+<%= Order::SHIPPING_COST %>
+<%= sum %>
+<%= Order::SHIPPING_COST.to_i + sum.to_i %>
+
 
 <%= @order.payment_method %>
 <%= @order.postal_code %><%= @order.address %><%= @order.name %>
+
+<%= link_to "注文を確定する", "/orders", method: :post %>

@@ -20,10 +20,12 @@ class Public::OrdersController < ApplicationController
       @order.address = params[:order][:address]
       @order.name = params[:order][:name]
     end
+    @cart_items = CartItem.joins(:item)
 
   end
 
   def complete
+    # カート内アイテムを削除する
   end
 
   def create
