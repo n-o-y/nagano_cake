@@ -30,7 +30,7 @@ class Public::OrdersController < ApplicationController
   def create
     order = Order.new
     order.customer_id = current_customer.id
-    order.postal_code = params[:postal]
+    order.postal_code = params[:postal_code]
     order.address = params[:address]
     order.name = params[:name]
     order.shipping_cost = Order::SHIPPING_COST
@@ -38,18 +38,16 @@ class Public::OrdersController < ApplicationController
     order.payment_method = params[:payment_method]
     order.save
 
-
-    order_detail = OrderDetail.new
     ordered_items = CartItem.joins(:item).where(customer_id: current_customer.id)
     ordered_items.each do |ordered_item|
+      order_detail = OrderDetail.new
       order_detail.order_id = order.id
       order_detail.item_id = ordered_item.item_id
       order_detail.price = ordered_item.item.price
-      order_detail.amount = orderd_item.amount
+      order_detail.amount = ordered_item.amount
       order_detail.save
     end
     CartItem.where(customer_id: current_customer.id).destroy_all
-
     redirect_to "/orders/complete"
   end
 
@@ -61,7 +59,7 @@ class Public::OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:customer_id, :postal_code, :address, :name, :payment_method)
+    params.require(:order).permit(:customer_id, :postal_code, :address, :name, :shipping_cost, :total_payment, :payment_method)
   end
   def order_detail_params
     params.require(:order_detail).permit(:order_id, :item_id, :price, :amount)
