@@ -28,14 +28,9 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    order = Order.new
+    order = Order.new(order_params)
     order.customer_id = current_customer.id
-    order.postal_code = params[:postal_code]
-    order.address = params[:address]
-    order.name = params[:name]
     order.shipping_cost = Order::SHIPPING_COST
-    order.total_payment = params[:total_payment]
-    order.payment_method = params[:payment_method]
     order.save
 
     ordered_items = CartItem.joins(:item).where(customer_id: current_customer.id)
@@ -45,7 +40,7 @@ class Public::OrdersController < ApplicationController
       order_detail.item_id = ordered_item.item_id
       order_detail.price = ordered_item.item.price
       order_detail.amount = ordered_item.amount
-      order_detail.save
+      # order_detail.save
     end
     CartItem.where(customer_id: current_customer.id).destroy_all
     redirect_to "/orders/complete"
