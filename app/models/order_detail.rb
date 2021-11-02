@@ -6,4 +6,10 @@ class OrderDetail < ApplicationRecord
   validates :amount, presence: true
   belongs_to :order
   belongs_to :item
+  def sum_of_price(price, amount)
+    price * amount
+  end
+  def price_with_tax(price)
+    price * 1.1
+  end
 end

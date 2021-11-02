@@ -1,0 +1,19 @@
+<h1>注文履歴詳細</h1>
+
+<%= @order.created_at %>
+<%= @order.postal_code %><% @order.address %><% @order.name %>
+<%= @order.payment_method %>
+<%= @order.status %>
+
+<% sum = 0 %>
+<% @order_details.each do |order_detail| %>
+  <%= order_detail.item.name %>
+  <%= order_detail.price_with_tax(order_detail.price) %>
+  <%= order_detail.amount %>
+  <%= order_detail.price_with_tax(order_detail.sum_of_price(order_detail.price, order_detail.amount)) %>
+  <% sum = sum + order_detail.price_with_tax(order_detail.sum_of_price(order_detail.price, order_detail.amount)).to_i %>
+<% end %>
+
+<%= Order::SHIPPING_COST %>
+<%= sum %>
+<%= Order::SHIPPING_COST.to_i + sum.to_i %>
