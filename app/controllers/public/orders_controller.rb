@@ -40,16 +40,18 @@ class Public::OrdersController < ApplicationController
       order_detail.item_id = ordered_item.item_id
       order_detail.price = ordered_item.item.price
       order_detail.amount = ordered_item.amount
-      # order_detail.save
+      order_detail.save
     end
     CartItem.where(customer_id: current_customer.id).destroy_all
     redirect_to "/orders/complete"
   end
 
   def index
+    @orders = Order.where(customer_id: current_customer.id).joins(:order_details)
   end
 
   def show
+    O
   end
 
   private
