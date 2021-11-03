@@ -8,4 +8,7 @@ class Item < ApplicationRecord
   validates :price, presence: true
   validates :is_active, presence: true
   validates :genre_id, presence: true
+  def price_with_tax(price)
+    price * 1.1
+  end
 end
