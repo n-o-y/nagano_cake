@@ -1,27 +1,29 @@
 <%= render 'public/header_public' %>
-<h2>ログイン</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="container">
+  <div class="row">
+    <h2 class="ml-30 mt-5 mb-3">ログイン</h2>
   </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+  <div class="container">
+    <h4 class="row ml-3 mb-4">会員の方はこちらからログイン</h4>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field form-group row d-flex justify-content-center">
+        <%= f.label :メールアドレス, class:"col-form-label col-2" %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"col-6" %>
+      </div>
+      <div class="field form-group row d-flex justify-content-center">
+        <%= f.label :パスワード, class:"col-form-label col-2" %><br />
+        <%= f.password_field :password, autocomplete: "current-password", class:"col-6" %>
+      </div>
+      <div class="actions form-group row">
+        <%= f.submit "ログイン", class:"col-2 offset-4 btn btn-info" %>
+      </div>
+    <% end %>
   </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+  <div class="container mb-5">
+    <h4 class="row ml-3 mb-4">会員登録がお済でない方</h4>
+    <div class="row mx-auto">
+      <%= link_to "こちら", "/customers/sign_up" %>から新規登録を行ってください。
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "public/customers/shared/links" %>
+</div>
+<%= render 'public/footer_public' %>
