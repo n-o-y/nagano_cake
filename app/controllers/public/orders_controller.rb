@@ -21,7 +21,6 @@ class Public::OrdersController < ApplicationController
       @order.name = params[:order][:name]
     end
     @cart_items = CartItem.joins(:item)
-
   end
 
   def complete

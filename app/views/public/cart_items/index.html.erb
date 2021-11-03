@@ -23,7 +23,7 @@
               <%= cart_item.item.name %>
             </td>
             <td class="col-2">
-              <%= cart_item.item.price*@TAX %>
+              <%= cart_item.item.price*@TAX.to_i %>
             </td>
             <td class="col-2">
               <%= form_with model:cart_item, local:true do |f| %>
@@ -32,13 +32,13 @@
               <% end %>
             </td>
             <td class="col-2">
-              <%= cart_item.item.price.to_i*cart_item.amount.to_i*@TAX %>
+              <%= cart_item.item.price*cart_item.amount*@TAX.to_i %>
             </td>
             <td class="col-2">
               <%= link_to "削除する", "/cart_items/#{cart_item.id}", method: :delete, class:"btn btn-danger" %>
             </td>
           </tr>
-          <% sum = sum + cart_item.item.price.to_i*cart_item.amount.to_i*@TAX %>
+          <% sum = sum + cart_item.item.price*cart_item.amount*@TAX.to_i %>
         <% end %>
       </tbody>
     </table>
