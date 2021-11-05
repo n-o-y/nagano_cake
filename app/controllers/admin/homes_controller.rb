@@ -1,5 +1,5 @@
 class Admin::HomesController < ApplicationController
   def top
-    @orders = Order.joins(:customer)
+    @orders = Order.page(params[:page]).joins(:customer)
   end
 end

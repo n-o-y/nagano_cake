@@ -1,10 +1,10 @@
 <%= render 'admin/header_admin' %>
 <div class="container">
-  <div class="row">
+  <div class="row justify-content-between">
     <h2 class="ml-30 my-5">商品一覧</h2>
+    <%= link_to "新規登録", "/admin/items/new", class:"btn btn-info my-auto" %>
   </div>
-  <%= link_to "追加", "/admin/items/new" %>
-  <div class="row w-100">
+  <div class="row w-100 mb-1">
     <table class="col col-10 mx-auto">
       <thead>
         <tr class="border-top border-bottom">
@@ -28,8 +28,11 @@
             </td>
           </tr>
         <% end %>
-        <%= paginate @items %>
       </tbody>
     </table>
   </div>
+  <div class="row mb-5 justify-content-center">
+    <%= paginate @items, class:"mx-auto" %>
+  </div>
 </div>
+<%= render 'admin/footer_admin' %>
