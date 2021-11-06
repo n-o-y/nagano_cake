@@ -10,12 +10,12 @@
           <%= f.label :支払方法 %>
         </div>
         <div class="row d-flex align-items-center ml-3">
-          <%= f.radio_button :payment_method, :credit %>
-          <%= f.label :payment_method, "クレジットカード", value: :credit %>
+          <%= f.radio_button :payment_method, :credit_card %>
+          <%= f.label :payment_method, "クレジットカード", value: :credit_card %>
         </div>
         <div class="row d-flex align-items-center ml-3">
-          <%= f.radio_button :payment_method, :bank %>
-          <%= f.label :payment_method, "銀行振込", value: :bank %>
+          <%= f.radio_button :payment_method, :transfer %>
+          <%= f.label :payment_method, "銀行振込", value: :transfer %>
         </div>
       </div>
       <div class="container mt-4">
