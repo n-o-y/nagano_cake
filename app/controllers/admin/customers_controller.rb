@@ -27,7 +27,12 @@ class Admin::CustomersController < ApplicationController
     redirect_to "/admin/customers"
   end
 
-  def destroy
+  def withdraw
+    customer = Customer.find(current_customer.id)
+    customer.is_active = false
+    customer.update
+    reset_session
+    redirect_to root_path
   end
 
   private
