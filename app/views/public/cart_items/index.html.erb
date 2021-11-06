@@ -4,14 +4,14 @@
     <h2 class="ml-30 mt-5">ショッピングカート</h2>
     <%= link_to "カートを空にする", "/cart_items/destroy_all", method: :delete, class:"btn btn-danger col-2 justify-content-end ml-30 mt-5" %>
   </div>
-    <table class="w-">
+    <table class="w-100">
       <thead>
         <tr class="row">
-          <th class="col-4">商品名</th>
-          <th class="col-2">単価(税込)</th>
-          <th class="col-2">数量</th>
-          <th class="col-2">小計</th>
-          <th class="col-2"></th>
+          <th style="width:30%">商品名</th>
+          <th style="width:20%">単価(税込)</th>
+          <th style="width:10%">数量</th>
+          <th style="width:30%">小計</th>
+          <th style="width:10%"></th>
         </tr>
       </thead>
       <tbody>
@@ -50,7 +50,7 @@
             合計金額
           </th>
           <td class="col-2">
-            <%= sum %>
+            <%= sum %>円
           </td>
         </tr>
       </table>
