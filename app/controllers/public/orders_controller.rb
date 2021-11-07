@@ -32,7 +32,8 @@ class Public::OrdersController < ApplicationController
     order.shipping_cost = Order::SHIPPING_COST
     order.save
 
-    ordered_items = CartItem.joins(:item).where(customer_id: current_customer.id)
+    # ordered_items = CartItem.joins(:item).where(customer_id: current_customer.id)
+    ordered_items = current_customer.cart_items
     ordered_items.each do |ordered_item|
       order_detail = OrderDetail.new
       order_detail.order_id = order.id
@@ -46,7 +47,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.where(customer_id: current_customer.id).joins(:order_details)
+    @orders = Order.all
   end
 
   def show
