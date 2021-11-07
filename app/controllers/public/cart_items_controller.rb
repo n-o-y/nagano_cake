@@ -7,9 +7,7 @@ class Public::CartItemsController < ApplicationController
 
   def update
     cart_item = CartItem.find(params[:id])
-    p cart_item
     cart_item.update(cart_item_params)
-    p cart_item
     redirect_to "/cart_items"
   end
 

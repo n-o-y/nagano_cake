@@ -38,7 +38,7 @@
           (税抜価格)
         </label>
         <div class="col-8">
-          <%= @item.price*@tax %>(<%= @item.price %>)円
+          <%= (@item.price*@tax).floor %>(<%= @item.price %>)円
         </div>
       </div>
       <div class="field row my-2">
