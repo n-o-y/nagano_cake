@@ -12,6 +12,13 @@ class Admin::OrdersController < ApplicationController
   def update
     order = Order.find(params[:id])
     order.update(order_params)
+    order_details = order.order_details
+    if order.payment_received?
+      order_details.each do |order_detail|
+        order_detail.preparing_ingredients!
+      end
+      # order_details.map{|order_detail| order_detail.preparing_ingredients!}
+    end
     redirect_to "/admin/orders/#{order.id}"
   end
 
